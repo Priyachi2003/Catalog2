@@ -16,7 +16,7 @@ public class Main {
             JSONObject inputJson = (JSONObject) parser.parse(new FileReader("input.json"));
             JSONArray testCases = (JSONArray) inputJson.get("testCases");
 
-            // Iterate through each test case
+            
             for (Object obj : testCases) {
                 JSONObject testCase = (JSONObject) obj;
                 BigInteger secret = calculateSecret(testCase);
