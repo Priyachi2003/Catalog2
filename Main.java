@@ -39,7 +39,7 @@ public class Main {
         List<Integer> xValues = new ArrayList<>();
         List<BigInteger> yValues = new ArrayList<>();
 
-        // Collect x and y values from the test case
+       
         for (int i = 1; i <= n; i++) {
             JSONObject root = (JSONObject) testCase.get(String.valueOf(i));
             if (root != null) {
@@ -50,24 +50,24 @@ public class Main {
             }
         }
 
-        // Check if there are enough valid roots
+        
         if (xValues.size() < k) {
             throw new IllegalArgumentException("Not enough valid roots to solve the polynomial.");
         }
 
-        // Calculate and return the constant term (secret)
+     
         return findConstantTerm(xValues, yValues, k);
     }
 
     private static BigInteger findConstantTerm(List<Integer> xValues, List<BigInteger> yValues, int k) {
         BigInteger c = BigInteger.ZERO;
 
-        // Lagrange interpolation to find the constant term
+     
         for (int i = 0; i < k; i++) {
             BigInteger term = yValues.get(i);
             for (int j = 0; j < k; j++) {
                 if (i != j) {
-                    // Calculate the numerator and denominator for Lagrange basis
+                    
                     BigInteger numerator = BigInteger.valueOf(0 - xValues.get(j));
                     BigInteger denominator = BigInteger.valueOf(xValues.get(i) - xValues.get(j));
                     term = term.multiply(numerator).divide(denominator);
